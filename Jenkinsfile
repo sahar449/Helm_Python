@@ -51,4 +51,11 @@ pipeline{
             }
         }
     }
+    post {
+        success {
+            echo 'The container is healtly!'
+        }
+        failure {
+            echo 'failed!'
+        }
 }
