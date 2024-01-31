@@ -9,7 +9,7 @@ pipeline{
 
     stages{
 
-        stage('docker'){
+        stage('Docker build and tag'){
             steps{
                 script{
                     sh '''
@@ -19,7 +19,7 @@ pipeline{
                     }
             }
         }
-        stage('docker push to docker-hub'){
+        stage('Docker push to docker-hub'){
             steps{
                 script{ 
                         withCredentials([string(credentialsId: 'docker_hub_login', variable: 'docker_hub')]) {
@@ -31,14 +31,14 @@ pipeline{
                     }
                 }
             }
-        stage('helm'){
+        stage('Build Helm'){
             steps{
                 script{
                     sh 'helm upgrade python --install helm --set image.tag="$BUILD_ID" '
                 }
             }
         }
-        stage('Check if healthly'){
+        stage('Check if the contianer healthly healthly'){
             steps{
                 script{
                     sh 'curl http://minikube:30000/health'
