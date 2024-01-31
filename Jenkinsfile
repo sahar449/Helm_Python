@@ -38,5 +38,12 @@ pipeline{
                 }
             }
         }
+        stage('Check if healthly'){
+            steps{
+                script{
+                    sh 'curl http://minikube:30000/health'
+                }
+            }
+        }
     }
 }
