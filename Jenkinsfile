@@ -41,7 +41,7 @@ pipeline{
         stage('Check if the contianer healthly'){
             steps{
                 script{
-                    sh 'curl http://minikube:30000/health'
+                    sh 'curl http://minikube:30001/health'
                 }
             }
         }
