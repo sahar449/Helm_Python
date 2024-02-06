@@ -1,4 +1,4 @@
-# Default values for java-hello.
+# Default values for python.
 # This is a YAML-formatted file.
 # Declare variables to be passed into your templates.
 
@@ -39,8 +39,7 @@ securityContext: {}
 service:
   type: NodePort
   port: 5000
-  targetPort: 5000
-  nodePort: 30000
+  nodePort: 30001
 
 ingress:
   enabled: false
