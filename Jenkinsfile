@@ -42,7 +42,7 @@ pipeline{
             steps{
                 script{
                     sh 'curl http://minikube:30000/health'
-                    sh 'cd helm && helm package --version $BUILD_ID . && ls -l .'
+                    sh 'cd helm && helm package --version $BUILD_ID .'
                 }
             }
         }
