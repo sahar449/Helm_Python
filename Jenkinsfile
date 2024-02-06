@@ -50,7 +50,7 @@ pipeline{
                 script{ 
                         withCredentials([usernamePassword(credentialsId: 'nexus_new', usernameVariable: 'test', passwordVariable: 'pass')]) {
                             sh '''
-                              cd helm && helm package --version $BUILD_ID .
+                              cd python && helm package --version $BUILD_ID .
                               curl -u $test:$pass minikube:30002/repository/helm/ --upload-file ./helm-$BUILD_ID.tgz
                             '''
                         }
