@@ -34,7 +34,7 @@ pipeline{
         stage('Build Helm'){
             steps{
                 script{
-                    sh 'helm --install upgrade  python helm --set image.tag="$BUILD_ID" '
+                    sh 'helm install --upgrade  python helm --set image.tag="$BUILD_ID" '
                 }
             }
         }
