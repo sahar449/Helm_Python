@@ -42,6 +42,7 @@ pipeline{
             steps{
                 script{
                     sh 'curl http://minikube:30000/health'
+                    sh 'cd helm && helm package --version $BUILD_ID . && ls -l .'
                 }
             }
         }
@@ -49,7 +50,6 @@ pipeline{
             steps{
                 script{ 
                         withCredentials([string(credentialsId: 'nexus', variable: 'nexus')]) {
-                            //sh 'cd helm && helm package --version $BUILD_ID .'
                             sh 'curl -u admin:$nexus minikube:30002/repository/helm/ --upload-file helm-0.2.0.tgz'
                         }
                     }
