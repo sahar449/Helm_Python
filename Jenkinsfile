@@ -48,10 +48,10 @@ pipeline{
         stage('Push helm to nexus'){
             steps{
                 script{ 
-                        withCredentials([string(credentialsId: 'nexus_new', variable: 'nexus_new')]) {
+                        withCredentials([usernamePassword(credentialsId: 'nexus_new', usernameVariable: 'test', passwordVariable: 'pass')]) {
                             sh '''
                               cd helm && helm package --version $BUILD_ID .
-                              curl -u $nexus_new minikube:30002/repository/helm/ --upload-file ./helm-$BUILD_ID.tgz
+                              curl -u $test:$pass minikube:30002/repository/helm/ --upload-file ./helm-$BUILD_ID.tgz
                             '''
                         }
                     }
