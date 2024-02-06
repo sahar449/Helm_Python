@@ -51,7 +51,7 @@ pipeline{
                         withCredentials([string(credentialsId: 'nexus', variable: 'nexus')]) {
                             sh '''
                               cd helm && helm package --version $BUILD_ID .
-                              curl -u admin:$nexus minikube:30002/repository/helm/ --upload-file ./helm/helm-$BUILD_ID.tgz
+                              curl -u admin:$nexus minikube:30002/repository/helm/ --upload-file ./helm-$BUILD_ID.tgz
                             '''
                         }
                     }
