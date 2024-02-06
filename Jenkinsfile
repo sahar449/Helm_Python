@@ -50,7 +50,7 @@ pipeline{
             steps{
                 script{ 
                         withCredentials([string(credentialsId: 'nexus', variable: 'nexus')]) {
-                            sh 'curl -u admin:$nexus minikube:30002/repository/helm/ --upload-file helm-0.2.0.tgz'
+                            sh 'curl -u admin:$nexus minikube:30002/repository/helm/ --upload-file ./helm/helm-$BUILD_ID.tgz'
                         }
                     }
                 }
