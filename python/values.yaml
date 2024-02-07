@@ -2,10 +2,6 @@
 # This is a YAML-formatted file.
 # Declare variables to be passed into your templates.
 replicaCount: 1
-data:
-  name:
-    firstname: "sahar"
-    lastname: bittman
 
 image:
   repository: sahar449/helm_python_app

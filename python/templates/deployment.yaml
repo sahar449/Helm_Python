@@ -1,7 +1,5 @@
 apiVersion: apps/v1
 kind: Deployment
-  {{.Values.data.name.firstname}}
-#{{.Values.data.name.lastname}}
 
 metadata:
   name: {{ include "python.fullname" . }}
