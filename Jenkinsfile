@@ -31,7 +31,7 @@ pipeline{
                     }
                 }
             }
-        stage('Build Helm'){
+        stage('Install/Upgrade Helm'){
             steps{
                 script{
                     sh 'helm upgrade --install python ./python/ --set image.tag="$BUILD_ID"'
@@ -45,7 +45,7 @@ pipeline{
                 }
             }
         }
-        stage('Push helm to nexus'){
+        stage('Pakcaage and Push helm to nexus'){
             steps{
                 script{ 
                         withCredentials([usernamePassword(credentialsId: 'nexus_new', usernameVariable: 'test', passwordVariable: 'pass')]) {
